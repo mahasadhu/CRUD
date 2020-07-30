@@ -405,4 +405,27 @@ trait Columns
     {
         return new CrudColumn($name);
     }
+
+    /**
+     * Set fixed column using Datatable's fixed-column plugin
+     * 
+     * @param  integer  $left       How many left column should be fixed
+     * @param  integer  $right      How many right column should be fixed
+
+    */
+    public function setFixedColumn($left, $right)
+    {
+        $this->setOperationSetting("fixed-columns", [$left, $right]);
+    }
+
+    /**
+     * Get fixed column setting
+     * 
+     * @return Array of fixed column, index 0 for left and index 1 for right
+
+    */
+    public function getFixedColumn()
+    {
+        return $this->getOperationSetting('fixed-columns') ?? [0, 0];
+    }
 }
