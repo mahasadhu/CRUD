@@ -36,9 +36,7 @@ trait InlineCreateOperation
     {
         $inlineFound = false;
         foreach (class_uses(self::class) as $key => $value) {
-            if (strpos($value, "\InlineCreateOperation") !== false) {
-                $inlineFound = true;
-            }
+            $inlineFound = strpos($value, "\InlineCreateOperation") !== false;
             if ($inlineFound && strpos($value, "\CreateOperation") !== false) {
                 abort(500, 'Inline Create Operation trait should be loaded AFTER Create Operation.');
             }
